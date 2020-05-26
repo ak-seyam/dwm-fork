@@ -142,6 +142,7 @@ typedef struct {
 } Rule;
 
 /* function declarations */
+static void runAutostart(void);
 static void applyrules(Client *c);
 static int applysizehints(Client *c, int *x, int *y, int *w, int *h, int interact);
 static void arrange(Monitor *m);
@@ -275,6 +276,11 @@ static Window root, wmcheckwin;
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
 
 /* function implementations */
+void
+runAutostart(void) {
+	system("cd ~/.dwm; ./autostart_blocking.sh");
+	system("cd ~/.dwm; ./autostart.sh &");
+}
 void
 applyrules(Client *c)
 {
@@ -2141,8 +2147,8 @@ main(int argc, char *argv[])
 	if (pledge("stdio rpath proc exec", NULL) == -1)
 		die("pledge");
 #endif /* __OpenBSD__ */
+	runAutostart()
 	scan();
-	system("cd ~/.dwm; ./autostart.sh ");
 	run();
 	cleanup();
 	XCloseDisplay(dpy);
