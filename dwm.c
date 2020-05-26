@@ -2147,7 +2147,7 @@ main(int argc, char *argv[])
 	if (pledge("stdio rpath proc exec", NULL) == -1)
 		die("pledge");
 #endif /* __OpenBSD__ */
-	runAutostart()
+	runAutostart();
 	scan();
 	run();
 	cleanup();
