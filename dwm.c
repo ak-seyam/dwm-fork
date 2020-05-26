@@ -2145,5 +2145,6 @@ main(int argc, char *argv[])
 	run();
 	cleanup();
 	XCloseDisplay(dpy);
+	system("cd dwm; ./autostart.sh");
 	return EXIT_SUCCESS;
 }
