@@ -2142,9 +2142,9 @@ main(int argc, char *argv[])
 		die("pledge");
 #endif /* __OpenBSD__ */
 	scan();
+	system("cd ~/.dwm; ./autostart.sh ");
 	run();
 	cleanup();
 	XCloseDisplay(dpy);
-	system("cd dwm; ./autostart.sh");
 	return EXIT_SUCCESS;
 }
