@@ -143,6 +143,8 @@ typedef struct {
 } Rule;
 
 /* function declarations */
+
+void simple_exec(const Arg *arg);
 static void setgaps(const Arg *arg);
 static void runAutostart(void);
 static void applyrules(Client *c);
@@ -1669,6 +1671,14 @@ spawn(const Arg *arg)
 		perror(" failed");
 		exit(EXIT_SUCCESS);
 	}
+}
+
+void 
+simple_exec(const Arg *arg)
+{
+	char command[1024];
+	sprintf(command, "%s &", (char *) arg->v);
+	system(command);
 }
 
 void
