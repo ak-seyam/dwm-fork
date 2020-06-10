@@ -13,6 +13,7 @@ static const char col_gray1[]       = "#222222"; // bar background
 static const char col_gray2[]       = "#110022"; // inactive border background
 static const char col_gray3[]       = "#999999"; // unselected elements in bar
 static const char col_gray4[]       = "#eeeeee"; // selected elements in bar
+static const unsigned int minwsz    = 20;       /* Minimal heigt of a client for smfact */
 static const char col_active[]        = "#3a5156";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -43,7 +44,7 @@ static const Rule rules[] = {
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
-
+static const float smfact     = 0.00; /* factor of tiled clients [0.00..0.95] */
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]",      tile },    /* first entry is default */
@@ -126,6 +127,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
 	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } }    ,
 	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } }    ,
+	// TODO a bug may arise here
+	{ MODKEY|ShiftMask,             XK_h,      setsmfact,      {.sf = +0.05} },
+	{ MODKEY|ShiftMask,             XK_l,      setsmfact,      {.sf = -0.05} },
+	// Till here
 	{ OPEN,                         XK_p,      simple_exec,    {.v = PROTEUS_ISIS } }    ,
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
