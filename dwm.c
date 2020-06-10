@@ -145,6 +145,7 @@ typedef struct {
 } Rule;
 
 /* function declarations */
+static void togglefullscr(const Arg *arg);
 static void setsmfact(const Arg *arg);
 void simple_exec(const Arg *arg);
 static void setgaps(const Arg *arg);
@@ -282,6 +283,14 @@ static Window root, wmcheckwin;
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
 
 /* function implementations */
+
+void
+togglefullscr(const Arg *arg)
+{
+  if(selmon->sel)
+    setfullscreen(selmon->sel, !selmon->sel->isfullscreen);
+}
+
 void
 setgaps(const Arg *arg)
 {
