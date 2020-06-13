@@ -2,19 +2,20 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 0;        /* 0 means bottom bar */
-static const unsigned int gappx     = 15;        /* gaps between windows */
-static const char *fonts[]          = { "FontAwesome:size=11" };
-static const char dmenufont[]       = "FontAwesome:size=11";
-static const char col_gray1[]       = "#222222"; // bar background
-static const char col_gray2[]       = "#110022"; // inactive border background
-static const char col_gray3[]       = "#999999"; // unselected elements in bar
-static const char col_gray4[]       = "#eeeeee"; // selected elements in bar
+static const unsigned int borderpx           = 2;        /* border pixel of windows */
+static const unsigned int snap               = 20;       /* snap pixel */
+static const int showbar                     = 1;        /* 0 means no bar */
+static const int topbar                      = 0;        /* 0 means bottom bar */
+static const unsigned int gappx              = 15;        /* gaps between windows */
+static const char *fonts[]                   = { "FontAwesome:size=11" };
+static const char dmenufont[]                = "FontAwesome:size=11";
+static const char col_gray1[]                = "#222222"; // bar background
+static const char col_gray2[]                = "#110022"; // inactive border background
+static const char col_gray3[]                = "#999999"; // unselected elements in bar
+static const char col_gray4[]                = "#eeeeee"; // selected elements in bar
+static const unsigned char barPadding       = 10  ; // selected elements in bar
 static const unsigned int minwsz    = 20;       /* Minimal heigt of a client for smfact */
-static const char col_active[]        = "#3a5156";
+static const char col_active[]        = "#0F2840";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -36,8 +37,9 @@ static const Rule rules[] = {
 	{ "qpdfview"     ,NULL  ,    NULL,       1 << 3,       0,           -1 },
 	{ "tm"           ,NULL  ,    NULL,       1 << 8,       0,           -1 },
 	{ "isis.exe"     ,NULL  ,    NULL,       1 << 4,       0,           -1 },
-	{ "Zathura"     ,NULL  ,    NULL,       1 << 3,       0,           -1 },
-	{ "Spotify"     ,NULL  ,    NULL,       1 << 6,       0,           -1 },
+	{ "Zathura"      ,NULL  ,    NULL,       1 << 3,       0,           -1 },
+	{ "Spotify"      ,NULL  ,    NULL,       1 << 6,       0,           -1 },
+	{ "vlc"          ,NULL  ,    NULL,       1 << 6,       0,           -1 },
 };
 
 /* layout(s) */
@@ -48,7 +50,7 @@ static const float smfact     = 0.00; /* factor of tiled clients [0.00..0.95] */
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]",      tile },    /* first entry is default */
-	{ "[]",      NULL },    /* no layout function means floating behavior */
+	{ "[]",      NULL },    /* no layout function means floating behavior */
 	{ "[]",      monocle },
 };
 
