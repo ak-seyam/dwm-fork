@@ -20,6 +20,7 @@ static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_active,  col_active  },
+	[SchemeNMaster]  = { "#ffffff", "#aa0000",  col_gray2  },
 };
 
 /* tagging */
@@ -91,6 +92,8 @@ static const char *playpause[] = {"playerctl","play-pause", NULL};
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_i,      incnmaster,     {.i = -1 } },
 	{ OPEN  ,                       XK_Return, spawn,          {.v = termcmd } },
 	{ OPEN  ,                       XK_w,      spawn,          {.v = browsercmd } },
 	{ OPEN  ,                       XK_f,      spawn,          {.v = filemanager } },
