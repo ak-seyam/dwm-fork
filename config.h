@@ -15,7 +15,7 @@ static const char col_gray3[]                = "#999999"; // unselected elements
 static const char col_gray4[]                = "#eeeeee"; // selected elements in bar
 static const unsigned char barPadding       = 10  ; // selected elements in bar
 static const unsigned int minwsz    = 20;       /* Minimal heigt of a client for smfact */
-static const char col_active[]        = "#0F2840";
+static const char col_active[]        = "#0F2871";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -23,8 +23,11 @@ static const char *colors[][3]      = {
 	[SchemeNMaster]  = { "#ffffff", "#aa0000",  col_gray2  },
 };
 
+
 /* tagging */
 static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+
+static const char nmaster_icon[]="[]";
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -78,7 +81,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_active, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "kitty", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 static const char *browsercmd[]  = { BRWOSER, NULL };
 static const char *filemanager[]  = { "kitty", "-e", "ranger" ,NULL};
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };

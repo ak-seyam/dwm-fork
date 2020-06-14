@@ -762,10 +762,11 @@ drawbar(Monitor *m)
 	w = blw = TEXTW(m->ltsymbol);
 	drw_setscheme(drw, scheme[SchemeNorm]);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
-
+	
+	// display number of master window
 	drw_setscheme(drw, scheme[SchemeNMaster]);
 	char nmaster_str[7];
-	sprintf(nmaster_str, "nm: %d", m->nmaster);
+	sprintf(nmaster_str, "%s %d",nmaster_icon, m->nmaster);
 	w = blw = TEXTW(nmaster_str);
 	x = drw_text(drw, x, 0, w, bh, lrpad /2 , nmaster_str, 0);
 
