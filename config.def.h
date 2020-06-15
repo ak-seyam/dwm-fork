@@ -37,6 +37,7 @@ static const Rule rules[] = {
 	/* class         instance    title       tagsMask     isfloating   monitor */
 	{ "Gimp"         ,NULL  ,    NULL,       0,            1,           -1 },
 	{ "Brave-browser",NULL  ,    NULL,       1 << 1,       0,           -1 },
+	{ "Slimjet"      ,NULL  ,    NULL,       1 << 1,       0,           -1 },
 	{ "Thunar"       ,NULL  ,    NULL,       1 << 2,       0,           -1 },
 	{ "qpdfview"     ,NULL  ,    NULL,       1 << 3,       0,           -1 },
 	{ "tm"           ,NULL  ,    NULL,       1 << 8,       0,           -1 },
