@@ -38,6 +38,7 @@ static const Rule rules[] = {
 	{ "Gimp"         ,NULL  ,    NULL,       0,            1,           -1 },
 	{ "Brave-browser",NULL  ,    NULL,       1 << 1,       0,           -1 },
 	{ "Slimjet"      ,NULL  ,    NULL,       1 << 1,       0,           -1 },
+	{ "firefox"      ,NULL  ,    NULL,       1 << 1,       0,           -1 },
 	{ "Thunar"       ,NULL  ,    NULL,       1 << 2,       0,           -1 },
 	{ "qpdfview"     ,NULL  ,    NULL,       1 << 3,       0,           -1 },
 	{ "tm"           ,NULL  ,    NULL,       1 << 8,       0,           -1 },
@@ -45,6 +46,7 @@ static const Rule rules[] = {
 	{ "Zathura"      ,NULL  ,    NULL,       1 << 3,       0,           -1 },
 	{ "Spotify"      ,NULL  ,    NULL,       1 << 6,       0,           -1 },
 	{ "vlc"          ,NULL  ,    NULL,       1 << 6,       0,           -1 },
+	{ "Inkscape"     ,NULL  ,    NULL,       1 << 7,       0,           -1 },
 };
 
 /* layout(s) */
@@ -64,7 +66,7 @@ static const Layout layouts[] = {
 #define OPEN MODKEY
 #define ENABLE MODKEY|ShiftMask
 #define DISABLE MODKEY|ControlMask
-#define BRWOSER "brave"
+#define BRWOSER "firefox"
 #define FILE_MANAGER "thunar"
 #define SCREENSHOTTER "deepin-screen-recorder"
 #define PROTEUS_ISIS "wine /run/media/a/myfiles/softwares/Proteus7.7/BIN/ISIS.EXE"
@@ -96,8 +98,9 @@ static const char *playpause[] = {"playerctl","play-pause", NULL};
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_i,      incnmaster,     {.i = -1 } },
+	{ ENABLE,                       XK_i,      incnmaster,     {.i = +1 } },
+	{ DISABLE,             XK_i,      incnmaster,     {.i = -1 } },
+	{ OPEN,             XK_i,      simple_exec,     {.v = "inkscape" } },
 	{ OPEN  ,                       XK_Return, spawn,          {.v = termcmd } },
 	{ OPEN  ,                       XK_w,      spawn,          {.v = browsercmd } },
 	{ OPEN  ,                       XK_f,      spawn,          {.v = filemanager } },
@@ -137,10 +140,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
 	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } }    ,
 	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } }    ,
-	// TODO a bug may arise here
 	{ MODKEY|ShiftMask,             XK_h,      setsmfact,      {.sf = +0.05} },
 	{ MODKEY|ShiftMask,             XK_l,      setsmfact,      {.sf = -0.05} },
-	// Till here
 	{ OPEN,                         XK_p,      simple_exec,    {.v = PROTEUS_ISIS } }    ,
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
